@@ -4,58 +4,57 @@ author: "Ing. Miguel Silva"
 date: "today"
 ---
 
-Introducción
-===============
+# Introducción
 
 En este informe se presenta el control de calidad de la base de datos climáticos registrada en la Parcela 3, a partir del archivo `Datos_Parcela_3.xlsx`.
 
 El objetivo principal es identificar y cuantificar:
 
-- Datos faltantes por variable.  
-- Valores fuera de rangos físicos razonables.  
-- Registros atípicos que puedan comprometer análisis posteriores (balance de energía, estimación de ET, etc.).
+-   Datos faltantes por variable.\
 
-- Visualizar el comportamiento temporal de las variables. 
+-   Valores fuera de rangos físicos razonables.\
 
+-   Registros atípicos que puedan comprometer análisis posteriores (balance de energía, estimación de ET, etc.).
 
-Descripción general de la base de datos
-==========================================
+-   Visualizar el comportamiento temporal de las variables.
 
-La base de datos esta conformada por los registros horarios de las siguientes variables: 
+# Descripción general de la base de datos
+
+La base de datos esta conformada por los registros horarios de las siguientes variables:
 
 **Variables meteorológicas**:
 
-- Temperatura (°C)
+-   Temperatura (°C)
 
-- Humedad relativa (%)
+-   Humedad relativa (%)
 
-- Velocidad del viento (m/s)
+-   Velocidad del viento (m/s)
 
-- Dirección del viento (°)
+-   Dirección del viento (°)
 
-- Presión atmosférica (mbar)
+-   Presión atmosférica (mbar)
 
-- Radiación global (Wm-2)
+-   Radiación global (Wm-2)
 
-- Precipitación (mm)
+-   Precipitación (mm)
 
 **Variables de flujos de energía**:
 
-- Temperatura superficial (°C)
+-   Temperatura superficial (°C)
 
-- Flujo de energía en el suelo (Wm-2)
+-   Flujo de energía en el suelo (Wm-2)
 
-- Radiación Neta (Wm-2)
+-   Radiación Neta (Wm-2)
 
-- Temperatura termocupla 1 (°C)
+-   Temperatura termocupla 1 (°C)
 
-- Temperatura termocupla 2 (°C)
+-   Temperatura termocupla 2 (°C)
 
-- Humedad del suelo a los 5 cm (m3/m3)
+-   Humedad del suelo a los 5 cm (m3/m3)
 
-- Humedad del suelo a los 40 cm (m3/m3)
+-   Humedad del suelo a los 40 cm (m3/m3)
 
-Para su procesamiento preliminar se aplica lo siguiente: 
+Para su procesamiento preliminar se aplica lo siguiente:
 
 ```{r}
 #| label: setup
@@ -154,8 +153,7 @@ n_Humedad_suelo_40cm_m3m3 = sum(!is.na(Humedad_suelo_40cm_m3m3))
 
 ```
 
-Análisis exploratorio
-========================
+# Análisis exploratorio
 
 Este análisis primero identifica el período temporal cubierto, el número de registros y variables, y determina qué columnas contienen información numérica. Luego calcula estadísticas descriptivas básicas; media, mediana, desviación estándar, mínimos, máximos y cantidad de datos faltantes para todas las variables, permitiendo detectar rangos típicos, dispersión y posibles anomalías. Finalmente, cuantifica los valores ausentes por variable, lo cual ayuda a evaluar la completitud del conjunto de datos antes de aplicar controles de calidad más estrictos.
 
@@ -237,8 +235,7 @@ return(resultados_ae)
 
 ```
 
-Control de calidad
-==================
+# Control de calidad
 
 Las reglas de control de calidad aplicadas en este informe son:
 
@@ -261,7 +258,6 @@ Radiacion_neta_Wm2: -200 a 1000 W/m²
 **Tratamiento de datos**
 
 Los valores fuera de rango se marcan mediante flags y, en la base validada, se reemplazan por NA para evitar su uso directo en análisis.
-
 
 ```{r}
 #| label: fun-control-calidad
@@ -419,8 +415,7 @@ TRUE ~ "ok"
 
 ```
 
-Resultados
-========================
+# Resultados
 
 **Resultados del análisis exploratorio**
 
@@ -459,7 +454,6 @@ valores_faltantes_df
 ```
 
 **Resumen de flags por variable**
-
 
 ```{r}
 
@@ -548,8 +542,7 @@ saltos_tiempo = resultados_cc$saltos_temporales
 
 ```
 
-Visualización gráfica de las variables
-======================================
+# Visualización gráfica de las variables
 
 **Series temporales facetadas de variables principales**
 
@@ -600,6 +593,7 @@ legend.position = "none"
 series_temporales
 
 ```
+
 **Humedad del suelo en el tiempo (2 profundidades)**
 
 ```{r}
@@ -783,7 +777,7 @@ n_rn_validas = sum(!is.na(Radiacion_neta_Wm2))
 )
 
 ```
----
 
-```{#}
-```
+------------------------------------------------------------------------
+
+`{#}`
