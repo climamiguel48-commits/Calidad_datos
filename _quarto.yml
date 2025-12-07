@@ -6,7 +6,6 @@ format:
     documentclass: article
     papersize: a4
     fontsize: 11pt
-    lang: es
     toc: true
     number-sections: true
     geometry:
