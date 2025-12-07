@@ -1,0 +1,22 @@
+project:
+  title: "Calidad_datos"
+
+editor: visual
+
+title: "Informe de Calidad de Datos"
+author: "Tu Nombre o Departamento"
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry:
+      - top=2.5cm
+      - bottom=2.5cm
+      - left=2.5cm
+      - right=2.5cm
+    toc: true
+    number-sections: true
+    fig-align: center
+
+
